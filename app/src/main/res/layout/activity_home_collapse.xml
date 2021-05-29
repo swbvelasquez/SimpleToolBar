@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity">
+
+    <!--
+           NestedScrollView => permite realizar el scroll con animaciones para un appbarlayout
+       -->
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <TextView
+            android:text="TextView With Padding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="512dp"
+            android:paddingBottom="512dp"/>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        app:liftOnScroll="true">
+
+        <!--
+            app:liftOnScroll="true" => permite que se incremente la elevacion del appbar al hacer scroll
+            android:theme="@style/ThemeOverlay.AppCompat.Dark" => permite aplicar el style o theme al appbar/toolbar
+        -->
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:expandedTitleGravity="bottom"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:contentScrim="?attr/colorPrimary"
+            app:scrimAnimationDuration="300"
+            >
+            <!--
+              CollapsingToolbarLayout => permite que el toolbar tenga la propiedad de colapsarse
+              app:expandedTitleGravity="bottom" => permite que se posicione la gravedad hacia abajo
+              app:layout_scrollFlags="scroll|exitUntilCollapsed" => permite que al scrollear se collapse y salir del collapso
+              app:contentScrim="?attr/colorPrimary" => permite que aparezca una animacion de color solido al collapsar y expandir
+              app:scrimAnimationDuration="300" => determina la duracion de la animacion scroll
+            -->
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:src="@drawable/backgroud_toolbar"
+                android:scaleType="centerCrop"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="1"
+                />
+
+            <!--
+              app:layout_collapseMode="parallax" => permite que la animacion se vea mas fluida con el efecto paralax
+              app:layout_collapseParallaxMultiplier => establece el % de la imagen se va ocultando al realizar el scroll
+            -->
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"/>
+
+            <!--
+              app:layout_collapseMode="pin" => permite que el menu item se mantenga al colapsar
+            -->
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
